@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
     return GlobalValues(
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'EKF Test',
+        title: 'Employees Database',
         theme: theme,
         home: EmployeeList(),
       ),

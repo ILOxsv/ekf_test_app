@@ -24,7 +24,7 @@ class EmployeeList extends StatelessWidget {
           SizedBox(
             width: Helper.width(200, size),
             child: AutoSizeText(
-              "Сотрудники EKF",
+              "Сотрудники",
               textAlign: TextAlign.center,
               style: Theme.of(context).textTheme.headline4,
               minFontSize: 12,
