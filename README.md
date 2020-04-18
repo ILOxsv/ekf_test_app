@@ -1,16 +1,25 @@
-# ekf_test_app
+# Тестовое Flutter-приложение для работы с базой данных о сотрудниках и их детях
 
-A new Flutter project.
+## Список сотрудников
 
-## Getting Started
+Отображены ФИО, должность и количество детей каждого сотрудника. Возможные действия: переход на экран сотрудника и добавление нового сотрудника.
 
-This project is a starting point for a Flutter application.
+<img src="examples/employees_list_1.png" width="400"> <img src="examples/employees_list_2.png" width="400">
 
-A few resources to get you started if this is your first Flutter project:
+## Экран добавления сотрудника
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+После ввода фамилии, имени, отчества (опционально), должности и даты рождения (в форматах "ДД.ММ.ГГГГ" или "ДД/ММ/ГГГГ"), активируется кнопка сохранения нового сотрудника. Возможные действия: возврат на предыдущий экран, очистка всех полей, вызов панели выбора даты рождения и сохранение сотрудника с автоматическим возвратом на предыдущий экран.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<img src="examples/add_employee_1.png" width="400"> <img src="examples/add_employee_2.png" width="400">
+
+## Экран сотрудника
+
+Отображены ФИО, должность, дата рождения, количество детей и их список с указанием ФИО и даты рождения каждого. Возможные действия: возврат на предыдущий экран и добавление нового ребёнка.
+
+<img src="examples/employee_page_1.png" width="400"> <img src="examples/employee_page_2.png" width="400">
+
+## Экран добавления ребенка
+
+Аналогичен экрану добавления сотрудника, за исключением отсутствия поля должности.
+
+<img src="examples/add_child_1.png" width="400"> <img src="examples/add_child_2.png" width="400">
