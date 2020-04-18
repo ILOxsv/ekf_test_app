@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ekf_test_app/common/helper.dart';
 import 'package:ekf_test_app/common/mycolors.dart';
 import 'package:ekf_test_app/data/child.dart';
 import 'package:ekf_test_app/data/employee.dart';
@@ -179,15 +180,16 @@ class _AddingPageState extends State<AddingPage> {
     final dataBloc = GlobalValues.of(context).dataBloc;
     final padding = MediaQuery.of(context).padding;
     final size = MediaQuery.of(context).size;
+    final buttonsTextGroup = AutoSizeGroup();
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: Column(
         children: <Widget>[
           SizedBox(
-            height: padding.top + 20,
+            height: padding.top + Helper.height(40, size),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: EdgeInsets.symmetric(horizontal: Helper.width(30, size)),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -196,38 +198,45 @@ class _AddingPageState extends State<AddingPage> {
                   onTap: () {
                     Navigator.of(context).pop();
                   },
-                  child: Icon(
-                    Icons.arrow_back_ios,
-                    color: MyColors.BLACK,
-                    size: 24,
+                  child: SizedBox(
+                    width: Helper.width(40, size),
+                    child: Center(
+                      child: Icon(
+                        Icons.arrow_back_ios,
+                        color: MyColors.BLACK,
+                        size: Helper.width(18, size),
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
                   child: Center(
                     child: SizedBox(
-                      width: size.width * 0.5,
+                      width: Helper.width(200, size),
                       child: AutoSizeText(
                         title(),
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.headline4,
-                        minFontSize: 18,
+                        minFontSize: 12,
                         maxFontSize: 24,
                         maxLines: 1,
+                        group: GlobalValues.of(context).titlesTextGroup,
                       ),
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 24,
+                  width: Helper.width(40, size),
                 )
               ],
             ),
           ),
           SizedBox(
-            height: 30,
+            height: Helper.height(25, size),
           ),
           Expanded(
             child: ListView(
+              padding: EdgeInsets.symmetric(vertical: Helper.height(25, size)),
               children: [
                 CustomTextField(
                   controller: surnameController,
@@ -290,8 +299,9 @@ class _AddingPageState extends State<AddingPage> {
                       )),
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 75, vertical: 25),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: Helper.width(50, size),
+                      vertical: Helper.height(25, size)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -300,9 +310,8 @@ class _AddingPageState extends State<AddingPage> {
                         onTap: () {
                           clear();
                         },
-                        child: Button(
-                          type: Type.clear,
-                        ),
+                        child:
+                            Button(type: Type.clear, group: buttonsTextGroup),
                       ),
                       GestureDetector(
                         behavior: HitTestBehavior.translucent,
@@ -332,13 +341,13 @@ class _AddingPageState extends State<AddingPage> {
                           }
                         },
                         child: Button(
-                          type: Type.save,
-                          enabled: canSave,
-                        ),
+                            type: Type.save,
+                            enabled: canSave,
+                            group: buttonsTextGroup),
                       ),
                     ],
                   ),
-                )
+                ),
               ],
             ),
           ),

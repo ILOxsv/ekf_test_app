@@ -1,4 +1,17 @@
 class Helper {
+
+  static height(value, size) {
+    final newHeight = size.height * (value / 812); //812 is reference iPhone X screen height
+    // print("Height: " + value.toString() + " -> " + newHeight.toString());
+    return newHeight;
+  }
+
+  static width(value, size) {
+    final newWidth = size.width * (value / 375);//375 is reference iPhone X screen width
+    // print("Width: " + value.toString() + " -> " + newWidth.toString());
+    return newWidth;
+  }
+
   static month(int monthNum) {
     switch (monthNum) {
       case 1:

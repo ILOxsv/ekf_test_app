@@ -1,3 +1,5 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ekf_test_app/common/helper.dart';
 import 'package:ekf_test_app/common/mycolors.dart';
 import 'package:flutter/material.dart';
 
@@ -26,16 +28,19 @@ class CustomTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 75),
+      padding: EdgeInsets.symmetric(
+          horizontal: Helper.width(50, size),
+          vertical: Helper.height(20, size)),
       child: TextField(
         decoration: InputDecoration(
             labelText: label,
             labelStyle:
-                Theme.of(context).textTheme.headline2.copyWith(fontSize: 12),
+                Theme.of(context).textTheme.headline2.copyWith(fontSize: 14),
             hintText: hint,
             hintStyle:
-                Theme.of(context).textTheme.headline1.copyWith(fontSize: 14),
+                Theme.of(context).textTheme.headline1.copyWith(fontSize: 18),
             suffixIcon: suffix,
             border: OutlineInputBorder(
                 borderSide: BorderSide(color: MyColors.GREY, width: 2),
@@ -46,7 +51,7 @@ class CustomTextField extends StatelessWidget {
         style: Theme.of(context)
             .textTheme
             .headline1
-            .copyWith(fontSize: 14, color: MyColors.BLACK),
+            .copyWith(fontSize: 18, color: MyColors.BLACK),
         controller: controller,
         focusNode: focus,
         onSubmitted: onSubmitted,

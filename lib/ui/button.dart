@@ -1,4 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:ekf_test_app/common/helper.dart';
 import 'package:ekf_test_app/common/mycolors.dart';
 import 'package:flutter/material.dart';
 
@@ -7,8 +8,9 @@ enum Type { clear, save }
 class Button extends StatelessWidget {
   final Type type;
   final bool enabled;
+  final AutoSizeGroup group;
 
-  const Button({Key key, this.type, this.enabled: false})
+  const Button({Key key, this.type, this.enabled: false, this.group})
       : assert(type != null);
 
   color() {
@@ -46,10 +48,12 @@ class Button extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      width: size.width * 0.3,
+      width: Helper.width(125, size),
       decoration: decoration(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+        padding: EdgeInsets.symmetric(
+            horizontal: Helper.width(15, size),
+            vertical: Helper.height(10, size)),
         child: Center(
           child: AutoSizeText(
             label(),
@@ -57,8 +61,9 @@ class Button extends StatelessWidget {
                 Theme.of(context).textTheme.headline2.copyWith(color: color()),
             textAlign: TextAlign.center,
             maxLines: 1,
-            minFontSize: 10,
+            minFontSize: 8,
             maxFontSize: 14,
+            group: group,
           ),
         ),
       ),

@@ -5,21 +5,23 @@ import 'package:flutter/material.dart';
 
 class ChildCard extends StatelessWidget {
   final Child child;
+  final List<AutoSizeGroup> groups;
 
-  const ChildCard({Key key, this.child}) : super(key: key);
+  const ChildCard({Key key, this.child, this.groups}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final groups = List.generate(3, (_) => AutoSizeGroup());
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 25),
+      padding: EdgeInsets.symmetric(
+          horizontal: Helper.width(50, size),
+          vertical: Helper.height(25, size)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            width: size.width * 0.5,
+            width: Helper.width(175, size),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -27,29 +29,29 @@ class ChildCard extends StatelessWidget {
                 AutoSizeText(
                   child.surname,
                   style: Theme.of(context).textTheme.headline1,
-                  minFontSize: 8,
+                  minFontSize: 6,
                   maxFontSize: 12,
                   maxLines: 1,
                   group: groups[2],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: Helper.height(10, size),
                 ),
                 AutoSizeText(
                   child.name,
                   style: Theme.of(context).textTheme.headline3,
-                  minFontSize: 12,
+                  minFontSize: 10,
                   maxFontSize: 18,
                   maxLines: 1,
                   group: groups[0],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: Helper.height(10, size),
                 ),
                 AutoSizeText(
                   child.patronymic,
                   style: Theme.of(context).textTheme.headline2,
-                  minFontSize: 10,
+                  minFontSize: 8,
                   maxFontSize: 14,
                   maxLines: 1,
                   group: groups[1],
@@ -58,7 +60,7 @@ class ChildCard extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: size.width * 0.2,
+            width: Helper.width(75, size),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -66,29 +68,29 @@ class ChildCard extends StatelessWidget {
                 AutoSizeText(
                   Helper.month(child.birthday.month),
                   style: Theme.of(context).textTheme.headline1,
-                  minFontSize: 8,
+                  minFontSize: 6,
                   maxFontSize: 12,
                   maxLines: 1,
                   group: groups[2],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: Helper.height(10, size),
                 ),
                 AutoSizeText(
                   child.birthday.day.toString(),
                   style: Theme.of(context).textTheme.headline3,
-                  minFontSize: 12,
+                  minFontSize: 10,
                   maxFontSize: 18,
                   maxLines: 1,
                   group: groups[0],
                 ),
                 SizedBox(
-                  height: 10,
+                  height: Helper.height(10, size),
                 ),
                 AutoSizeText(
                   child.birthday.year.toString(),
                   style: Theme.of(context).textTheme.headline2,
-                  minFontSize: 10,
+                  minFontSize: 8,
                   maxFontSize: 14,
                   maxLines: 1,
                   group: groups[1],
